@@ -1,0 +1,13 @@
+{% extends "main/header.html"  %}
+{% load crispy_forms_tags %}
+{%  block content %}
+<h1>Create your account here</h1>
+      <form method="POST">
+          {% csrf_token %} <!--Tracking user behaviour -->
+          {{form|crispy}}
+          <br>
+          <br>
+          <button type="submit"class="btn"><strong>Register</strong></button><br>
+      </form><br>
+if you already have an account, <a href="/login"><strong>Login</strong></a>
+{%  endblock %}

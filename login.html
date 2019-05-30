@@ -1,0 +1,31 @@
+{% extends "main/header.html"  %}
+{% load crispy_forms_tags %}
+{%  block content %}
+<h1>User Login</h1>
+      <form method="POST">
+          {% csrf_token %} <!--Tracking user behaviour -->
+          {{form|crispy}}
+          <br>
+          <br>
+          <button type="submit"class="btn"><strong>Login</strong></button><br>
+      </form><br>
+Do not have an  account, <a href="/register"><strong>Register</strong></a><br>
+<br>
+ <a href="/forgot"><strong>Forgot Password</strong></a>
+{%  endblock %}
+{% if messages %}
+        {% for msg in message %}
+            {% if message.tags == 'success' %}   
+               <script>  M.toast({html:"{{message}}", classes:'green rounded', displayLength:'2000'}); </script>
+    
+               {% elif message.tags == 'info' %}   
+               <script>  M.toast({html:"{{message}}", classes:'blue rounded', displayLength:'2000'}); </script>
+
+               {% elif message.tags == 'warning' %}   
+               <script>  M.toast({html:"{{message}}", classes:'red rounded', displayLength:'10000'}); </script>
+
+               {% elif message.tags == 'error' %}   
+               <script>  M.toast({html:"{{message}}", classes:'pink rounded', displayLength:'10000'}); </script>
+            {% endif %}
+        {% endfor %}
+{% endif %}

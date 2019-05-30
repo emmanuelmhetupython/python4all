@@ -1,0 +1,42 @@
+{% extends "main/header.html"  %}
+
+{%  block content %}
+
+<div class="slider">
+  
+    
+  
+</div>
+<h3>History of Python from Python Creator Guido Van Rossum</h3>
+<div class="video-container">
+  <iframe width="634" height="360" src="https://www.youtube.com/embed/ualxVE4YOjc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> frameborder="0" allowfullscreen></iframe>
+
+</div>
+<h3>The Father of Python Programming Language</h3>
+    <div class="video-container">
+      <iframe width="640" height="360" src="https://www.youtube.com/embed/qxMcGDnT8uc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="row">
+        <marquee><h4>What you can do with Python programming language</h4></marquee>
+       
+        {% for cat in categories %}
+        <div class="col s12 m6 14">
+
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title"><h5>{{cat.tutorial_category }}</h5></span>
+                <p>{{cat.category_summary }}</p>
+            </div>
+           
+            <div class="card-action">
+             <a href="/index">Learn More </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+    
+      </div>
+
+
+          
+{%  endblock %}

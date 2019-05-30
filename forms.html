@@ -1,0 +1,109 @@
+<head>
+  {% load static %}
+  <link href = "{% static 'tinymce/css/prism.css' %}" rel ="stylesheet" >
+  <!-- Compiled and minified CSS -->
+  <link href = "{% static 'main/css/materialize.min.css' %}" rel ="stylesheet" >
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="{% static 'main/js/materialize.min.js' %}""></script>
+
+</head>
+
+<body>
+
+
+  <nav>
+     <div class="nav-wrapper">
+       <a href="/" class="brand-logo">Python4all</a>
+       <ul id="nav-mobile" class="right hide-on-med-and-down">
+         <li><a href="/home">Home</a></li>
+         <li><a href="/What we do">What we do</a></li>
+         <li><a href="/Contact us">Contact Us</a></li>
+         <li><a href="/">Python News</a></li>
+         {% if user.is_authenticated %}
+         <li><a href="/forum">Forum</a></li>
+                <li><a href="/account">{{user.username}}</a></li>
+                <li><a href="/logout">Logout</a></li>
+         {% else %}
+         <li><a href="/">Blog</a></li>
+                <li><a href="/register">Register</a></li>
+                <li><a href="/login">Login</a></li>
+         {%   endif %}
+       </ul>
+     </div>
+     
+    
+   </nav>
+
+   {% if messages %}
+   {% for message in messages %}
+       {% if message.tags == 'success' %}   
+          <script>  M.toast({html:"{{message}}", classes:'green rounded', displayLength:'2000'}); </script>
+
+          {% elif message.tags == 'info' %}   
+          <script>  M.toast({html:"{{message}}", classes:'blue rounded', displayLength:'2000'}); </script>
+
+          {% elif message.tags == 'warning' %}   
+          <script>  M.toast({html:"{{message}}", classes:'red rounded', displayLength:'10000'}); </script>
+
+          {% elif message.tags == 'error' %}   
+          <script>  M.toast({html:"{{message}}", classes:'pink rounded', displayLength:'10000'}); </script>
+       {% endif %}
+   {% endfor %}
+{% endif %}
+
+<div class="container"
+
+    {%  block content %}
+    {%  endblock %}
+</div>
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Who am l</h5>
+        <p class="grey-text text-lighten-4">l am a python programmer, teacher and entreprenuer.Python programming language is a top programming language for all. With python you can do
+          do what you want from web development, data science, mobile application development, internet of things, game development, artificial intelligence and robotics
+          ,just name it and you can do it using python. Python4aLL is a community were python  programmers interact and share ideas of 
+          all aspects mention above. Founded by a python programmer Emmanuel Mhetu, python4all.net is a platform for begginners, intermediate and advanced 
+          python programmers to share the latest about python. If you are to google search about python. It is the number on 
+          programming langauge followed by JavaScript and the rest will follow. Again python programming language is the simplest
+          and very powerful programming language as compared to other languages. 
+        </p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Important Links</h5>
+        <ul>
+          {% if user.is_authenticated %}
+         <li><a href="/forum">Forum</a></li>
+                <li><a href="/account">{{user.username}}</a></li>
+                <li><a href="/logout">Logout</a></li>
+         {% else %}
+         <li><a href="/">Blog</a></li>
+                <li><a href="/register">Register</a></li>
+                <li><a href="/login">Login</a></li>
+         {%   endif %}
+        </ul>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">I am social,follow me on</h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="#!">Facebook</li>
+          <li><a class="grey-text text-lighten-3" href="/register">Twitter</a></li>
+          <li><a class="grey-text text-lighten-3" href="/login">Linked In</a></li>
+          <li><a class="grey-text text-lighten-3" href="/home">Installgram</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+    © 2019 Site by Emmanuel Mhetu
+    <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+    </div>
+  </div>
+</footer>
+    
+
+</body>
+<script src="{% static  'tinymce/js/prism.js' %}"></script>
